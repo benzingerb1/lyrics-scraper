@@ -21,4 +21,6 @@ with open(band + '.txt', 'w') as f:
         r = requests.get(url)
         soup = BeautifulSoup(r.content, 'html.parser')
         lyrics = soup.find_all('div', class_="content-text-inner")
-        print(lyrics.text)
+        for line in lyrics:
+            f.write(line.text + '\n')
+        f.write('\n')
